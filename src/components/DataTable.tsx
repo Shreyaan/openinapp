@@ -8,7 +8,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { buttonVariants } from "@/components/ui/button";
+
 import { Data } from "@/pages/dashboard";
+import { cn } from "@/lib/utils";
 
 const DataTable = ({ data }: { data: Data }) => {
   return (
@@ -19,7 +29,9 @@ const DataTable = ({ data }: { data: Data }) => {
           <TableHead className="w-[100px]">ID</TableHead>
           <TableHead>Links</TableHead>
           <TableHead>Prefix</TableHead>
-          <TableHead className="text-right">Selected Tags</TableHead>
+          <TableHead className="text-right">Select Tags</TableHead>
+          <TableHead>Selected Tags</TableHead>{" "}
+          {/* New column for selected tags */}
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -33,13 +45,17 @@ const DataTable = ({ data }: { data: Data }) => {
 
 export default DataTable;
 
-const TableRowWithDropdown = ({ item }: { item: Data[number] }) => {
-  const [selectedTag, setSelectedTag] = useState("");
+const TableRowWithDropdown = ({ item }: { item: Data[0] }) => {
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-  const handleTagChange = (e: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setSelectedTag(e.target.value);
+  const handleTagChange = (value: string) => {
+    setSelectedTags((prevTags) => {
+      if (prevTags.includes(value)) {
+        return prevTags.filter((tag) => tag !== value);
+      } else {
+        return [...prevTags, value];
+      }
+    });
   };
 
   return (
@@ -48,16 +64,46 @@ const TableRowWithDropdown = ({ item }: { item: Data[number] }) => {
       <TableCell>{item.links}</TableCell>
       <TableCell>{item.prefix}</TableCell>
       <TableCell className="text-right">
-        <select value={selectedTag} onChange={handleTagChange}>
-          <option value="">Select Tag</option>
-          {item.selectTags.map(
-            (tag: { text: string }, index: React.Key | null | undefined) => (
-              <option key={index} value={tag.text}>
+        {/* <select multiple value={selectedTags} onChange={handleTagChange}>
+          {item.selectTags.map((tag, index) => (
+            <option key={index} value={tag.text}>
+              {tag.text}
+            </option>
+          ))}
+        </select> */}
+        <Select onValueChange={handleTagChange}>
+          <SelectTrigger className="">
+            <SelectValue placeholder="Tags" />
+          </SelectTrigger>
+          <SelectContent>
+            {item.selectTags.map((tag, index) => (
+              <SelectItem value={tag.text} key={index}>
                 {tag.text}
-              </option>
-            )
-          )}
-        </select>
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </TableCell>
+      <TableCell className="flex flex-wrap max-w-md">
+        {selectedTags.map((tag, index) => (
+          <button
+            key={index}
+            className={cn("mx-2", buttonVariants({ variant: "outline" }))}
+          >
+            {tag}
+            {index !== selectedTags.length - 1}
+            <span
+              className="ml-2 cursor-pointer"
+              onClick={() =>
+                setSelectedTags((prevTags) => prevTags.filter((t) => t !== tag))
+              }
+              role="button"
+              aria-label="Remove tag"
+            >
+              X
+            </span>
+          </button>
+        ))}
       </TableCell>
     </TableRow>
   );
