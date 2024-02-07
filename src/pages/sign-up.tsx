@@ -8,6 +8,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { useSignInWithProvider } from "../lib/hooks/useSignInWithProvider";
 import { useSigninCheck } from "reactfire";
 import { useSignInWithEmailAndPassword } from "@/lib/hooks/useSignInWithEmailAndPassword";
+import { useSignUpWithEmailAndPassword } from "@/lib/hooks/useSignUpWithEmailAndPassword";
 
 function SignInComponent() {
   const [signInWithProvider, signInWithProviderState] = useSignInWithProvider();
@@ -77,7 +78,7 @@ function SignInComponent() {
     }
   }, [signInWithProviderState.success, onSignIn]);
 
-  const [signIn, state] = useSignInWithEmailAndPassword();
+  const [signIn, state] = useSignUpWithEmailAndPassword();
   const loading = state.loading;
   const error = state.error;
 
@@ -109,9 +110,9 @@ function SignInComponent() {
     <section className=" text-black ">
       <div className="flex flex-col  justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
         <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-          Sign in
+          Sign Up
         </h1>
-        <h2 className="py-2">Sign in your account</h2>
+        <h2 className="py-2">Sign Up to create your account</h2>
 
         <div className="w-full   xl:p-0 ">
           <AuthProviderButton />
@@ -164,15 +165,15 @@ function SignInComponent() {
                 type="submit"
                 className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
               >
-                Sign in
+                Sign up
               </button>
               <p className="text-sm font-light text-gray-500 ">
-                Don’t have an account?{" "}
+               Already have an account?{" "}
                 <a
-                  href="/sign-up"
+                  href="/sign-in"
                   className="font-medium text-blue-600 hover:underline "
                 >
-                  Register here
+                  Sign in here
                 </a>
               </p>
             </form>
@@ -187,7 +188,7 @@ export default function Login() {
   return (
     <div className="flex h-screen bg-gray-100">
       <Head>
-        <title>Sign In</title>
+        <title>Sign Up</title>
       </Head>
       <div className="w-1/2 text-white hidden flex-col justify-between p-12 lg:flex relative">
         <div
