@@ -1,118 +1,157 @@
+// pages/signin.js
+import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+function SignInComponent() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <section className="bg-gray-50 text-black ">
+      <div className="flex flex-col  justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
+        <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+          Sign in
+        </h1>
+        <h2 className="py-2">Sign in your account</h2>
+
+        <div className="w-full   xl:p-0 ">
+          <div className="py-4 p-2 space-y-4 ">
+            <form className="space-y-4 md:space-y-6" action="#">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-gray-900 "
+                >
+                  Your email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                  placeholder="name@company.com"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-gray-900 "
+                >
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="••••••••"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                  required
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-start">  <a
+                  href="#"
+                  className="text-sm font-medium text-blue-600 hover:underline "
+                >
+                  Forgot password?
+                </a></div>
+              
+              </div>
+              <button
+                type="submit"
+                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+              >
+                Sign in
+              </button>
+              <p className="text-sm font-light text-gray-500 ">
+                Don’t have an account?{" "}
+                <a
+                  href="#"
+                  className="font-medium text-blue-600 hover:underline "
+                >
+                  Register here
+                </a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Login() {
+  return (
+    <div className="flex h-screen bg-gray-100">
+      <Head>
+        <title>Sign In</title>
+      </Head>
+      <div className="w-1/2 text-white hidden flex-col justify-between p-12 lg:flex relative">
+        <div
+          className="absolute top-0 left-0 w-full h-full"
+          style={{
+            backgroundColor: "#605BFF",
+            clipPath: "polygon(0 0, 100% 0, 80% 100%, 0% 100%)",
+          }}
+        ></div>
+        <div className="relative flex flex-col justify-between h-full">
+          {" "}
+          <div className="flex  ">
+            <div className="rounded-full  w-16 h-16  flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="87"
+                height="81"
+                viewBox="0 0 87 81"
+                fill="none"
+              >
+                <circle cx="44.1102" cy="40.3929" r="40.0765" fill="#FCFCFF" />
+                <path
+                  d="M2.02979 37.0531L32.0871 51.7478L58.8048 29.7058L84.8545 43.0646"
+                  stroke="#605BFF"
+                  stroke-width="6"
+                />
+              </svg>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <h1 className="text-7xl font-bold">BASE</h1>
+          </div>
+          <div className="flex justify-center items-center content-center space-x-4 ">
+            {/* Icons here */}
+            <a href="#" className="shrink-0">
+              <Image
+                src="/icons/github.png"
+                width={39}
+                height={39}
+                alt="github"
+              />
+            </a>
+            <a href="#" className="shrink-0">
+              {" "}
+              <Image src="/icons/x.png" width={40} height={40} alt="Twitter" />
+            </a>
+            <a href="#" className="shrink-0">
+              <Image
+                src="/icons/discord.png"
+                width={45}
+                height={45}
+                alt="discord"
+              />
+            </a>
+            <a href="#" className="shrink-0">
+              <Image
+                src="/icons/linkedin.png"
+                width={44}
+                height={44}
+                alt="LinkedIn"
+              />
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="w-full lg:w-1/2 flex justify-center items-center">
+        <SignInComponent></SignInComponent>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
