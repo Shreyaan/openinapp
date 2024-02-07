@@ -81,10 +81,3 @@ export default async function handler(
   });
 }
 
-let obj = {
-  Question: "How satisfied are you with our service?",
-  Type: "mcq",
-  Answer: "",
-  Required: "true",
-  Options: "Very satisfied, Satisfied, Neutral, Unsatisfied, Very unsatisfied",
-};

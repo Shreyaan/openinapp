@@ -7,14 +7,26 @@ import { SetStateAction, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
+import { TableCaption } from "@/components/ui/table";
+import DataTable from "../components/DataTable";
 
-// import { Header } from "../components/header/Header";
+export type Data = {
+  id: number;
+  links: string;
+  prefix: string;
+  selectTags: {
+    text: string;
+  }[];
+  selectedTags: {
+    text: string;
+  }[];
+}[];
 
 const Dashboard = () => {
   const { status, data: user } = useUser();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const { toast } = useToast();
-  const [data, setData] = useState<SetStateAction<any[]>>([]);
+  const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
   const handleFileChange: React.ChangeEventHandler<HTMLInputElement> = (
@@ -202,6 +214,20 @@ const Dashboard = () => {
                     </>
                   )}
                 </button>
+              </div>
+            </div>
+            <div className="mt-4">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap">
+                Uploads
+              </span>
+              <div className="">
+                {" "}
+                {data.length > 1 && (
+                  <>
+                    {" "}
+                    <DataTable data={data as Data}></DataTable>
+                  </>
+                )}
               </div>
             </div>
           </main>
