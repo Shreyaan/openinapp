@@ -9,6 +9,7 @@ import { useSignInWithProvider } from "../lib/hooks/useSignInWithProvider";
 import { useSigninCheck } from "reactfire";
 import { useSignInWithEmailAndPassword } from "@/lib/hooks/useSignInWithEmailAndPassword";
 import { useSignUpWithEmailAndPassword } from "@/lib/hooks/useSignUpWithEmailAndPassword";
+import Link from "next/link";
 
 function SignInComponent() {
   const [signInWithProvider, signInWithProviderState] = useSignInWithProvider();
@@ -169,13 +170,14 @@ function SignInComponent() {
               </button>
               <p className="text-sm font-light text-gray-500 ">
                Already have an account?{" "}
-                <a
-                  href="/sign-in"
+                <Link
+                  href="/"
                   className="font-medium text-blue-600 hover:underline "
                 >
                   Sign in here
-                </a>
+                </Link>
               </p>
+              {error ? <span className="text-red-500">{error.message}</span> : null}
             </form>
           </div>
         </div>

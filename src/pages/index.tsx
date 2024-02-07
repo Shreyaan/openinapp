@@ -175,6 +175,9 @@ function SignInComponent() {
                   Register here
                 </a>
               </p>
+              {error ? (
+                <span className="text-red-500">{error.message}</span>
+              ) : null}
             </form>
           </div>
         </div>
