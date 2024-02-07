@@ -73,7 +73,7 @@ const TableRowWithDropdown = ({ item }: { item: Data[0] }) => {
         </select> */}
         <Select onValueChange={handleTagChange}>
           <SelectTrigger className="">
-            <SelectValue placeholder="Tags" />
+            <SelectValue placeholder="Select Tags" />
           </SelectTrigger>
           <SelectContent>
             {item.selectTags.map((tag, index) => (
@@ -88,7 +88,7 @@ const TableRowWithDropdown = ({ item }: { item: Data[0] }) => {
         {selectedTags.map((tag, index) => (
           <button
             key={index}
-            className={cn("mx-2", buttonVariants({ variant: "outline" }))}
+            className={cn("mx-2 ", buttonVariants({ variant: "secondary" }), "bg-violet-500 text-white")}
           >
             {tag}
             {index !== selectedTags.length - 1}
