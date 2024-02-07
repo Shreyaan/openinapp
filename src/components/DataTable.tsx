@@ -61,7 +61,7 @@ const TableRowWithDropdown = ({ item }: { item: Data[0] }) => {
   return (
     <TableRow key={item.id}>
       <TableCell className="font-medium">{item.id}</TableCell>
-      <TableCell>{item.links}</TableCell>
+      <TableCell className="underline text-blue-400">{item.links}</TableCell>
       <TableCell>{item.prefix}</TableCell>
       <TableCell className="text-right">
         {/* <select multiple value={selectedTags} onChange={handleTagChange}>
