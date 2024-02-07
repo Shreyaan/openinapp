@@ -8,6 +8,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { useSignInWithProvider } from "../lib/hooks/useSignInWithProvider";
 import { useSigninCheck } from "reactfire";
 import { useSignInWithEmailAndPassword } from "@/lib/hooks/useSignInWithEmailAndPassword";
+import Link from "next/link";
 
 function SignInComponent() {
   const [signInWithProvider, signInWithProviderState] = useSignInWithProvider();
@@ -168,12 +169,12 @@ function SignInComponent() {
               </button>
               <p className="text-sm font-light text-gray-500 ">
                 Don’t have an account?{" "}
-                <a
+                <Link
                   href="/sign-up"
                   className="font-medium text-blue-600 hover:underline "
                 >
                   Register here
-                </a>
+                </Link>
               </p>
               {error ? (
                 <span className="text-red-500">{error.message}</span>
